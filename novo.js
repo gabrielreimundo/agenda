@@ -1,8 +1,8 @@
-const btnform=document.getElementById('botoesForm')
+const btnform=document.getElementById('btnform')
 
 
 //coletando e enviando
-btnform.addEventListener('submit',(e)=>{
+btnform.addEventListener('click',(e)=>{
     e.preventDefault();
     var id=document.getElementById('f_id').value;
     var nome=document.getElementById('f_nome').value;
