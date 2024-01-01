@@ -1,23 +1,25 @@
 const db = require('./db')
 
 const Post = db.sequelize.define('contato',{
+    id: {
+        type: db.Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     nome: {
-        type: db.Sequelize.STRING
-    },
-    custo: {
-        type: db.Sequelize.DECIMAL
-    },
-    preço: {
-        type: db.Sequelize.DECIMAL
-    },
-    Qtd_estoque: {
         type: db.Sequelize.CHAR
     },
-    codigo: {
+    celular: {
         type: db.Sequelize.CHAR
-    }
+    },
+    email: {
+        type: db.Sequelize.CHAR
+    },
+    dtnasc: {
+        type: db.Sequelize.CHAR
+    },
 });
 
-//Post.sync({force: true})
+//Post.sync()
 
 module.exports = Post

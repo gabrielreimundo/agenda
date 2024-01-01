@@ -15,7 +15,7 @@ btnform.addEventListener('submit',(e)=>{
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({nome: nome, custo: custo, preço: preço, Qtd_estoque: Qtd_estoque, codigo: codigo}),
+        body: JSON.stringify({id: id, nome: nome, celular: celular, email: email, dtnasc: dtnasc}),
       })
       .then(response => response.json())
       .then(data => console.log(data))
