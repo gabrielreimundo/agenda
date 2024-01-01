@@ -6,10 +6,9 @@ btnform.addEventListener('submit',(e)=>{
     e.preventDefault();
     var id=document.getElementById('f_id').value;
     var nome=document.getElementById('f_nome').value;
-    var celular=document.getElementById('inp_custo').value;
-    var preço=document.getElementById('inp_preço').value;
-    var Qtd_estoque=document.getElementById('inp_Qestoque').value;
-    var codigo=document.getElementById('inp_codigo').value;
+    var celular=document.getElementById('f_celular').value;
+    var email=document.getElementById('f_email').value;
+    var dtnasc=document.getElementById('f_dtnasc').value;
 
     fetch('http://localhost:8081/add', {
         method: 'POST',
