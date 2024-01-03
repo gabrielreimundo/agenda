@@ -22,6 +22,21 @@ app.post('/add', (req, res) => {
       });
    })
 
+   //enviando ao front
+   app.get('/dados', function(req, res) {
+    Post.findAll({order: [['id', 'ASC']]}).then(function(posts) { 
+        const postData = posts.map(post => ({
+            id: post.id,
+            nome: post.nome,
+            celular: post.celular,
+            email: post.email,
+            dtnasc: post.dtnasc
+        }));
+        res.json(postData);
+    }); 
+});
+
+
    //CALLBACK    
    app.listen(8081, function(){
     console.log("Servidor Rodando na url http://localhost:8081")
