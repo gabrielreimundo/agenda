@@ -9,23 +9,19 @@ const principal=document.querySelector('#principal')
 
 btn_home.addEventListener("click",(evt)=>{
     selecionarAba(evt.target)
-    window.open("./home.html","if_principal")
+    window.open("../home/home.html","if_principal")
 })
 btn_novo.addEventListener("click",(evt)=>{
     selecionarAba(evt.target)
-    window.open("./novo.html","if_principal")
-})
-btn_pesquisar.addEventListener("click",(evt)=>{
-    selecionarAba(evt.target)
-    window.open("./pesquisar.html","if_principal")
+    window.open("../novo/novo.html","if_principal")
 })
 btn_gestao.addEventListener("click",(evt)=>{
     selecionarAba(evt.target)
-    window.open("./gestao.html","if_principal")
+    window.open("../gestao/gestao.html","if_principal")
 })
 btn_sobre.addEventListener("click",(evt)=>{
     selecionarAba(evt.target)
-    window.open("./sobre.html","if_principal")
+    window.open("../sobre/sobre.html","if_principal")
 })
 
 const selecionarAba=(el)=>{
