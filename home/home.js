@@ -44,6 +44,18 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   e.preventDefault();
   let query = document.getElementById('inputPesquisa').value;
   // Faça uma solicitação para a API com a consulta
+  fetch('http://localhost:8081/pesquisa', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({query: query}),
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch((error) => {
+    console.error('Erro:', error);
+  });
 
 });
 

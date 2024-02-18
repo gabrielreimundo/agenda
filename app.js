@@ -38,11 +38,10 @@ app.post('/add', (req, res) => {
 
 //pesquisa
 app.get('/pesquisa', function(req, res) {
-  let query = req.query.q;
-  // Consulte o banco de dados MySQL com a consulta e retorne os resultados
-  Contact.findAll({
+  let query = req.body.query;
+  Post.findAll({
       where: {
-          name: {
+          nome: {
               [Op.like]: '%' + query + '%'
           }
       }
@@ -53,3 +52,4 @@ app.get('/pesquisa', function(req, res) {
    app.listen(8081, function(){
     console.log("Servidor Rodando na url http://localhost:8081")
 });
+
