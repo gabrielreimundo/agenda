@@ -2,6 +2,7 @@ const express = require("express");
 const app = express()
 const Post = require('./post');
 const cors = require('cors'); 
+const { Op } = require("sequelize");
 
 app.use(cors());
 app.use(express.json());
@@ -22,7 +23,7 @@ app.post('/add', (req, res) => {
       });
    })
 
-   //enviando ao front
+   //enviando ao cliente
    app.get('/dados', function(req, res) {
     Post.findAll({order: [['id', 'ASC']]}).then(function(posts) { 
         const postData = posts.map(post => ({
@@ -38,7 +39,7 @@ app.post('/add', (req, res) => {
 
 //pesquisa
 app.get('/pesquisa', function(req, res) {
-  let query = req.body.query;
+  let query = req.query.query;
   Post.findAll({
       where: {
           nome: {
@@ -52,4 +53,3 @@ app.get('/pesquisa', function(req, res) {
    app.listen(8081, function(){
     console.log("Servidor Rodando na url http://localhost:8081")
 });
-

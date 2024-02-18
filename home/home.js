@@ -1,5 +1,5 @@
 const dgvDados=document.getElementById('dgvDados')
-
+const resPesquisa=document.getElementById('resultado')
 
 fetch('http://localhost:8081/dados')
 .then(res=>res.json())
@@ -57,5 +57,24 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
     console.error('Erro:', error);
   });
 
+});
+
+
+fetch('http://localhost:8081/pesquisa', {
+  method: 'GET',
+})
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+  const resPesquisa = document.getElementById('resPesquisa'); 
+  data.forEach(el => {
+    const result = document.createElement('p');
+    result.setAttribute('class', 'resultadoPesquisa');
+    result.innerHTML = el.nome; 
+    resPesquisa.appendChild(result);
+  });
+})
+.catch((error) => {
+  console.error('Erro:', error);
 });
 
