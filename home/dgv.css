@@ -81,3 +81,22 @@
     border-radius: 10px;
     margin-left: 5px;
 }
+#boxresultado{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: flex-start;
+    align-self: flex-start;
+}
+#resultado{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: flex-start;
+    align-self: flex-start;
+    width: 760px;
+}
+.contato{
+    display: flex;
+    flex-direction: row;
+}

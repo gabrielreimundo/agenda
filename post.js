@@ -20,6 +20,6 @@ const Post = db.sequelize.define('contato',{
     },
 });
 
-//Post.sync()
+
 
 module.exports = Post

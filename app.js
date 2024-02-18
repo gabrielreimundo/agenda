@@ -37,16 +37,23 @@ app.post('/add', (req, res) => {
     }); 
 });
 
-//pesquisa
-app.get('/pesquisa', function(req, res) {
-  let query = req.query.query;
+app.post('/buscar', function(req, res) {
   Post.findAll({
       where: {
-          nome: {
-              [Op.like]: '%' + query + '%'
-          }
+          nome: req.body.nome
       }
-  }).then(contacts => res.json(contacts));
+  }).then(function(contatos) { 
+      const contatoData = contatos.map(contato => ({
+          id: contato.id,
+          nome: contato.nome,
+          celular: contato.celular,
+          email: contato.email,
+          dtnasc: contato.dtnasc
+      }));
+      res.json(contatoData);
+  }).catch(function(erro){
+      res.status(500).json({ erro: erro.toString() });
+  }); 
 });
 
    //CALLBACK    

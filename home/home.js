@@ -1,5 +1,4 @@
 const dgvDados=document.getElementById('dgvDados')
-const resPesquisa=document.getElementById('resultado')
 
 fetch('http://localhost:8081/dados')
 .then(res=>res.json())
@@ -42,39 +41,51 @@ fetch('http://localhost:8081/dados')
 
 document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   e.preventDefault();
-  let query = document.getElementById('inputPesquisa').value;
-  // Faça uma solicitação para a API com a consulta
-  fetch('http://localhost:8081/pesquisa', {
-    method: 'GET',
+  let nome = document.getElementById('inputPesquisa').value;
+  // Faça uma solicitação para a API com o nome
+  fetch('http://localhost:8081/buscar', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({query: query}),
+    body: JSON.stringify({nome: nome}),
   })
   .then(response => response.json())
-  .then(data => console.log(data))
-  .catch((error) => {
-    console.error('Erro:', error);
-  });
+  .then(data =>{
 
+
+    const resPesquisa = document.getElementById('resultado');
+    resPesquisa.innerHTML="Resultado da Pesquisa: "
+    const contato=document.createElement('div')
+    contato.setAttribute('class','contato')
+
+    const idContato=document.createElement('p')
+    idContato.innerHTML=data[0].id;
+    idContato.setAttribute("class","c1");
+    contato.appendChild(idContato)
+
+
+    const nomeContato=document.createElement('p')
+    nomeContato.innerHTML=data[0].nome;
+    nomeContato.setAttribute("class","c2");
+    contato.appendChild(nomeContato)
+
+    const celularContato=document.createElement('p')
+    celularContato.innerHTML=data[0].celular;
+    celularContato.setAttribute("class","c3");
+    contato.appendChild(celularContato)
+
+    const emailContato=document.createElement('p')
+    emailContato.innerHTML=data[0].email;
+    emailContato.setAttribute("class","c4");
+    contato.appendChild(emailContato)
+
+    const dtnascContato=document.createElement('p')
+    dtnascContato.innerHTML=data[0].dtnasc;
+    dtnascContato.setAttribute("class","c5");
+    contato.appendChild(dtnascContato)
+
+    resPesquisa.appendChild(contato)
+
+  })
 });
-
-
-fetch('http://localhost:8081/pesquisa', {
-  method: 'GET',
-})
-.then(response => response.json())
-.then(data => {
-  console.log(data);
-  const resPesquisa = document.getElementById('resPesquisa'); 
-  data.forEach(el => {
-    const result = document.createElement('p');
-    result.setAttribute('class', 'resultadoPesquisa');
-    result.innerHTML = el.nome; 
-    resPesquisa.appendChild(result);
-  });
-})
-.catch((error) => {
-  console.error('Erro:', error);
-});
-
