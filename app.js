@@ -36,6 +36,18 @@ app.post('/add', (req, res) => {
     }); 
 });
 
+//pesquisa
+app.get('/pesquisa', function(req, res) {
+  let query = req.query.q;
+  // Consulte o banco de dados MySQL com a consulta e retorne os resultados
+  Contact.findAll({
+      where: {
+          name: {
+              [Op.like]: '%' + query + '%'
+          }
+      }
+  }).then(contacts => res.json(contacts));
+});
 
    //CALLBACK    
    app.listen(8081, function(){

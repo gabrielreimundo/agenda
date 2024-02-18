@@ -1,6 +1,6 @@
 const dgvDados=document.getElementById('dgvDados')
 
-//recebendo
+
 fetch('http://localhost:8081/dados')
 .then(res=>res.json())
 .then(res=>{
@@ -39,4 +39,11 @@ fetch('http://localhost:8081/dados')
     dgvDados.appendChild(dgvLinha)
   });
 })
+
+document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
+  e.preventDefault();
+  let query = document.getElementById('inputPesquisa').value;
+  // Faça uma solicitação para a API com a consulta
+
+});
 

@@ -12,6 +12,7 @@
     background-color: #248;
     color: aliceblue;
     border-radius: 5px 5px 0px 0px;
+    width: 760px;
 }
 .dgvTitulos div, .dgvDados div{
     padding: 5px;
@@ -39,18 +40,44 @@
 .dgvLinha:nth-child(even){
     background-color: #ddd;
 }
+
 .c1{
     width: 50px;
+    text-align: center;
 }
 .c2{
     width: 150px;
+    text-align: center;
 }
 .c3{
     width: 150px;
+    text-align: center;
 }
 .c4{
     width: 150px;
+    overflow: hidden;
+    text-align: center;
 }
 .c5{
     width: 200px;
+    text-align: center;
+}
+/*---------------------------*/
+
+#CampoPesquisa{
+    display: flex;
+    justify-content: flex-start;
+    align-self: flex-start;
+    flex-direction: row;
+    padding: 10px 10px 40px 0px;
+}
+#inputPesquisa{
+    width: 400px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#BtnPesquisa{
+    border-radius: 10px;
+    margin-left: 5px;
 }
