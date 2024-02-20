@@ -42,7 +42,6 @@ fetch('http://localhost:8081/dados')
 document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   e.preventDefault();
   let nome = document.getElementById('inputPesquisa').value;
-  // Faça uma solicitação para a API com o nome
   fetch('http://localhost:8081/buscar', {
     method: 'POST',
     headers: {
@@ -56,6 +55,36 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
 
     const resPesquisa = document.getElementById('resultado');
     resPesquisa.innerHTML="Resultado da Pesquisa: "
+
+    const dgvContatos=document.createElement('div')
+    dgvContatos.setAttribute('id','dgvContatos')
+
+    const dgvTitulos=document.createElement('div')
+    dgvTitulos.setAttribute('class','dgvTitulos')
+
+    const c1=document.createElement('div')
+    c1.setAttribute('class','c1')
+    c1.innerHTML="Id";
+    dgvTitulos.appendChild(c1)
+    const c2=document.createElement('div')
+    c2.setAttribute('class','c2')
+    c2.innerHTML="Nome";
+    dgvTitulos.appendChild(c2)
+    const c3=document.createElement('div')
+    c3.setAttribute('class','c3')
+    c3.innerHTML="Celular";
+    dgvTitulos.appendChild(c3)
+    const c4=document.createElement('div')
+    c4.setAttribute('class','c4')
+    c4.innerHTML="E-mail";
+    dgvTitulos.appendChild(c4)
+    const c5=document.createElement('div')
+    c5.setAttribute('class','c5')
+    c5.innerHTML="Data de Nascimento";
+    dgvTitulos.appendChild(c5)
+  
+    dgvContatos.appendChild(dgvTitulos)
+
     const contato=document.createElement('div')
     contato.setAttribute('class','contato')
 
@@ -63,7 +92,6 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
     idContato.innerHTML=data[0].id;
     idContato.setAttribute("class","c1");
     contato.appendChild(idContato)
-
 
     const nomeContato=document.createElement('p')
     nomeContato.innerHTML=data[0].nome;
@@ -85,7 +113,18 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
     dtnascContato.setAttribute("class","c5");
     contato.appendChild(dtnascContato)
 
+    const btnLimparPesquisa = document.createElement('button');
+btnLimparPesquisa.addEventListener('click', function() {
+    resPesquisa.innerHTML=''
+});
+btnLimparPesquisa.setAttribute('class',"btnlimpar")
+btnLimparPesquisa.innerHTML = 'Limpar';
+
+ 
+   
+    resPesquisa.appendChild(dgvContatos)
     resPesquisa.appendChild(contato)
+    resPesquisa.appendChild(btnLimparPesquisa)
 
   })
 });
