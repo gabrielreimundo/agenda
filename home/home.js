@@ -35,9 +35,17 @@ fetch('http://localhost:8081/dados')
     c5.innerHTML=el.dtnasc;
     dgvLinha.appendChild(c5)
 
+
+  dgvLinha.addEventListener('click', function(e) {
+    //excluir contato
+    console.log(e.target)
+  });
+
     dgvDados.appendChild(dgvLinha)
   });
 })
+
+
 
 document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   e.preventDefault();
@@ -128,3 +136,4 @@ btnLimparPesquisa.innerHTML = 'Limpar';
 
   })
 });
+

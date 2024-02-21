@@ -85,8 +85,8 @@
     display: flex;
     flex-direction: column;
     padding: 5px;
-    justify-content: flex-start;
-    align-self: flex-start;
+    justify-content: center;
+    align-self: center;
 }
 #resultado{
     display: flex;
@@ -106,4 +106,7 @@
 }
 .btnlimpar{
     width: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid white;
+    border-radius: 5px;
 }
