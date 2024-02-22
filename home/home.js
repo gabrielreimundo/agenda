@@ -35,10 +35,23 @@ fetch('http://localhost:8081/dados')
     c5.innerHTML=el.dtnasc;
     dgvLinha.appendChild(c5)
 
+    const painelDeOperações=document.createElement('div')
+    painelDeOperações.setAttribute("class","pdo");
+    painelDeOperações.innerHTML='...';
+    dgvLinha.appendChild(painelDeOperações)
 
-  dgvLinha.addEventListener('click', function(e) {
-    //excluir contato
-    console.log(e.target)
+
+  painelDeOperações.addEventListener('click', function(e) {
+    const divPdo=document.createElement('div')
+    divPdo.setAttribute('class','divpdo')
+
+    const btnpdo=document.createElement('button')
+    btnpdo.innerHTML='Editar'
+    divPdo.appendChild(btnpdo)
+
+    document.body.appendChild(divPdo)
+
+    console.log(e.target.parentNode.firstChild)
   });
 
     dgvDados.appendChild(dgvLinha)
