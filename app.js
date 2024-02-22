@@ -56,6 +56,18 @@ app.post('/buscar', function(req, res) {
   }); 
 });
 
+app.post('/excluir',function(req, res){
+    Post.destroy({
+        where: {
+          id: req.params.id,
+        },
+      }).then(function(){
+        res.json({ message: 'Dados excluidos com sucesso!' });
+      }).catch(function(erro){
+        res.status(500).json({ erro: erro.toString() });
+      });
+})
+
    //CALLBACK    
    app.listen(8081, function(){
     console.log("Servidor Rodando na url http://localhost:8081")

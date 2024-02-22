@@ -23,3 +23,6 @@ const Post = db.sequelize.define('contato',{
 
 
 module.exports = Post
+
+
+//https://www.treinaweb.com.br/blog/usando-sequelize-orm-com-node-e-express

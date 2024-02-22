@@ -1,52 +1,45 @@
-const dgvDados=document.getElementById('dgvDados')
+const dgvDados = document.getElementById('dgvDados')
 
-fetch('http://localhost:8081/dados')
-.then(res=>res.json())
-.then(res=>{
-  res.forEach(el => {
-    const dgvLinha=document.createElement("div");
+const createDataGridView = function(el, dgvDados) {
+  const dgvLinha = document.createElement("div");
+  dgvLinha.setAttribute("class","dgvLinha");
 
-    //dgvDados.innerHTML="";
+  const c1 = document.createElement("div");
+  c1.setAttribute("class","c1");
+  c1.innerHTML = el.id;
+  dgvLinha.appendChild(c1)
 
-    dgvLinha.setAttribute("class","dgvLinha");
+  const c2 = document.createElement("div");
+  c2.setAttribute("class","c2");
+  c2.innerHTML = el.nome;
+  dgvLinha.appendChild(c2)
+            
+  const c3 = document.createElement("div");
+  c3.setAttribute("class","c3");
+  c3.innerHTML = el.celular;
+  dgvLinha.appendChild(c3)
 
-    const c1=document.createElement("div");
-    c1.setAttribute("class","c1");
-    c1.innerHTML=el.id;
-    dgvLinha.appendChild(c1)
+  const c4 = document.createElement("div");
+  c4.setAttribute("class","c4");
+  c4.innerHTML = el.email;
+  dgvLinha.appendChild(c4)
 
-    const c2=document.createElement("div");
-    c2.setAttribute("class","c2");
-    c2.innerHTML=el.nome;
-    dgvLinha.appendChild(c2)
-              
-    const c3=document.createElement("div");
-    c3.setAttribute("class","c3");
-    c3.innerHTML=el.celular;
-    dgvLinha.appendChild(c3)
+  const c5 = document.createElement("div");
+  c5.setAttribute("class","c5");
+  c5.innerHTML = el.dtnasc;
+  dgvLinha.appendChild(c5)
 
-    const c4=document.createElement("div");
-    c4.setAttribute("class","c4");
-    c4.innerHTML=el.email;
-    dgvLinha.appendChild(c4)
-
-    const c5=document.createElement("div");
-    c5.setAttribute("class","c5");
-    c5.innerHTML=el.dtnasc;
-    dgvLinha.appendChild(c5)
-
-    const painelDeOperações=document.createElement('div')
-    painelDeOperações.setAttribute("class","pdo");
-    painelDeOperações.innerHTML='...';
-    dgvLinha.appendChild(painelDeOperações)
-
+  const painelDeOperações = document.createElement('div')
+  painelDeOperações.setAttribute("class","pdo");
+  painelDeOperações.innerHTML = '...';
+  dgvLinha.appendChild(painelDeOperações)
 
   painelDeOperações.addEventListener('click', function(e) {
-    const divPdo=document.createElement('div')
+    const divPdo = document.createElement('div')
     divPdo.setAttribute('class','divpdo')
 
-    const btnpdo=document.createElement('button')
-    btnpdo.innerHTML='Editar'
+    const btnpdo = document.createElement('button')
+    btnpdo.innerHTML = 'Editar'
     divPdo.appendChild(btnpdo)
 
     document.body.appendChild(divPdo)
@@ -54,9 +47,16 @@ fetch('http://localhost:8081/dados')
     console.log(e.target.parentNode.firstChild)
   });
 
-    dgvDados.appendChild(dgvLinha)
-  });
+  dgvDados.appendChild(dgvLinha)
+}
+fetch('http://localhost:8081/dados')
+.then(res => res.json())
+.then(res => {
+  res.forEach(el => {
+    createDataGridView(el,dgvDados)
+  })
 })
+
 
 
 
@@ -72,8 +72,6 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   })
   .then(response => response.json())
   .then(data =>{
-
-
     const resPesquisa = document.getElementById('resultado');
     resPesquisa.innerHTML="Resultado da Pesquisa: "
 
@@ -135,11 +133,11 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
     contato.appendChild(dtnascContato)
 
     const btnLimparPesquisa = document.createElement('button');
-btnLimparPesquisa.addEventListener('click', function() {
-    resPesquisa.innerHTML=''
-});
-btnLimparPesquisa.setAttribute('class',"btnlimpar")
-btnLimparPesquisa.innerHTML = 'Limpar';
+      btnLimparPesquisa.addEventListener('click', function() {
+        resPesquisa.innerHTML=''
+    });
+      btnLimparPesquisa.setAttribute('class',"btnlimpar")
+      btnLimparPesquisa.innerHTML = 'Limpar';
 
  
    
