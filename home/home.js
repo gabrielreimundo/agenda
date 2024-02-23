@@ -1,7 +1,11 @@
 const dgvDados = document.getElementById('dgvDados')
 const resPesquisa = document.getElementById('resultado');
 let TitleOfDgvExist=false;
+let WastheResearchDone = false;
 
+const operationsdashboard= function(){
+  
+}
 
 const createDataGridView = function(el, dgvDados) {
   const dgvLinha = document.createElement("div");
@@ -60,6 +64,16 @@ fetch('http://localhost:8081/dados')
   })
 })
 
+  const btnlimpar=function(resPesquisa){
+    const btnLimpar = document.createElement('button');
+    btnLimpar.addEventListener('click', function(){
+        TitleOfDgvExist=false;
+       resPesquisa.innerHTML='';
+       });
+       btnLimpar.setAttribute('class',"btnlimpar")
+       btnLimpar.innerHTML = 'Limpar';
+      resPesquisa.appendChild(btnLimpar)
+     };
 
 const createTitleOfDgv=function(resPesquisa){
   TitleOfDgvExist=true
@@ -111,7 +125,10 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   .then(response => response.json())
   .then(data =>{
 
+   
+
     if(TitleOfDgvExist==false){
+      WastheResearchDone=true
       createTitleOfDgv(resPesquisa)
       const contato=document.createElement('div')
       contato.setAttribute('class','contato')
@@ -174,17 +191,10 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
     resPesquisa.appendChild(contato)
     }
 
-    
+    if(WastheResearchDone==true){
+      btnlimpar(resPesquisa)
+    }
 
-   
-    const btnLimparPesquisa = document.createElement('button');
-    btnLimparPesquisa.addEventListener('click', function() {
-      TitleOfDgvExist=false;
-      resPesquisa.innerHTML=''
-    });
-    btnLimparPesquisa.setAttribute('class',"btnlimpar")
-    btnLimparPesquisa.innerHTML = 'Limpar';
-    resPesquisa.appendChild(btnLimparPesquisa)
   })
 });
 
