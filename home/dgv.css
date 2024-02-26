@@ -126,7 +126,10 @@
 .none{
     display: none;
 }
-.btnlimpar{
+.display{
+    display: block;
+}
+#clearReseach{
     width: 100px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid white;

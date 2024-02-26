@@ -1,5 +1,6 @@
 const dgvDados = document.getElementById('dgvDados')
 const resPesquisa = document.getElementById('resultado');
+const btnClear=document.getElementById('clearReseach');
 let TitleOfDgvExist=false;
 let WastheResearchDone = false;
 
@@ -40,15 +41,13 @@ const createDataGridView = function(el, dgvDados) {
   painelDeOperações.setAttribute("class","pdo");
   painelDeOperações.innerHTML = '...';
   dgvLinha.appendChild(painelDeOperações)
-
+  
   painelDeOperações.addEventListener('click', function(e) {
     const divPdo = document.createElement('div')
     divPdo.setAttribute('class','divpdo')
-
     const btnpdo = document.createElement('button')
     btnpdo.innerHTML = 'Editar'
     divPdo.appendChild(btnpdo)
-
     document.body.appendChild(divPdo)
 
     console.log(e.target.parentNode.firstChild)
@@ -63,18 +62,14 @@ fetch('http://localhost:8081/dados')
     createDataGridView(el,dgvDados)
   })
 })
-
-  const btnlimpar=function(resPesquisa){
-    const btnLimpar = document.createElement('button');
-    btnLimpar.addEventListener('click', function(){
+  const btnC=function(resPesquisa){
+    btnClear.addEventListener('click', function(){
         TitleOfDgvExist=false;
-       resPesquisa.innerHTML='';
+        btnClear.classList.remove('display')
+        btnClear.classList.add("none");
+        resPesquisa.innerHTML='';
        });
-       btnLimpar.setAttribute('class',"btnlimpar")
-       btnLimpar.innerHTML = 'Limpar';
-      resPesquisa.appendChild(btnLimpar)
      };
-
 const createTitleOfDgv=function(resPesquisa){
   TitleOfDgvExist=true
   resPesquisa.innerHTML="Resultado da Pesquisa: "
@@ -112,9 +107,13 @@ const createTitleOfDgv=function(resPesquisa){
 
 }
 
+
 document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   e.preventDefault();
   let nome = document.getElementById('inputPesquisa').value;
+  btnC(resPesquisa)
+  btnClear.classList.remove('none')
+  btnClear.classList.add("display");
   fetch('http://localhost:8081/buscar', {
     method: 'POST',
     headers: {
@@ -124,8 +123,6 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   })
   .then(response => response.json())
   .then(data =>{
-
-   
 
     if(TitleOfDgvExist==false){
       WastheResearchDone=true
@@ -186,13 +183,9 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
     const dtnascContato=document.createElement('p')
       dtnascContato.innerHTML=data[0].dtnasc;
       dtnascContato.setAttribute("class","c5");
-      
+
     contato.appendChild(dtnascContato)
     resPesquisa.appendChild(contato)
-    }
-
-    if(WastheResearchDone==true){
-      btnlimpar(resPesquisa)
     }
 
   })
