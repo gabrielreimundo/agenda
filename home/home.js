@@ -43,11 +43,13 @@ const createDataGridView = function(el, dgvDados,operationsdashboard) {
   
   c6.addEventListener('click', function(e) {
     c6.classList.toggle('openOperations')
-  
+    c6.innerHTML=''
     const btnEdit=document.createElement('button')
     btnEdit.innerHTML='Editar'
+    c6.appendChild(btnEdit)
     const btnDelete=document.createElement('button')
     btnDelete.innerHTML='Excluir'
+    c6.appendChild(btnDelete)
   
     console.log(e.target.parentNode.firstChild)
 
