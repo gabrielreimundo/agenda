@@ -2,13 +2,12 @@ const dgvDados = document.getElementById('dgvDados')
 const resPesquisa = document.getElementById('resultado');
 const btnClear=document.getElementById('clearReseach');
 let TitleOfDgvExist=false;
-let WastheResearchDone = false;
 
-const operationsdashboard= function(){
-  
-}
 
-const createDataGridView = function(el, dgvDados) {
+
+
+
+const createDataGridView = function(el, dgvDados,operationsdashboard) {
   const dgvLinha = document.createElement("div");
   dgvLinha.setAttribute("class","dgvLinha");
 
@@ -37,21 +36,23 @@ const createDataGridView = function(el, dgvDados) {
   c5.innerHTML = el.dtnasc;
   dgvLinha.appendChild(c5)
 
-  const painelDeOperações = document.createElement('div')
-  painelDeOperações.setAttribute("class","pdo");
-  painelDeOperações.innerHTML = '...';
-  dgvLinha.appendChild(painelDeOperações)
+  const c6 = document.createElement('div')
+  c6.setAttribute("class","pdo");
+  c6.innerHTML = '...';
+  dgvLinha.appendChild(c6)
   
-  painelDeOperações.addEventListener('click', function(e) {
-    const divPdo = document.createElement('div')
-    divPdo.setAttribute('class','divpdo')
-    const btnpdo = document.createElement('button')
-    btnpdo.innerHTML = 'Editar'
-    divPdo.appendChild(btnpdo)
-    document.body.appendChild(divPdo)
-
+  c6.addEventListener('click', function(e) {
+    c6.classList.toggle('openOperations')
+  
+    const btnEdit=document.createElement('button')
+    btnEdit.innerHTML='Editar'
+    const btnDelete=document.createElement('button')
+    btnDelete.innerHTML='Excluir'
+  
     console.log(e.target.parentNode.firstChild)
-  });
+
+  }
+  );
 
   dgvDados.appendChild(dgvLinha)
 }
@@ -62,14 +63,15 @@ fetch('http://localhost:8081/dados')
     createDataGridView(el,dgvDados)
   })
 })
-  const btnC=function(resPesquisa){
-    btnClear.addEventListener('click', function(){
-        TitleOfDgvExist=false;
-        btnClear.classList.remove('display')
-        btnClear.classList.add("none");
-        resPesquisa.innerHTML='';
-       });
-     };
+const btnC=function(resPesquisa){
+  btnClear.addEventListener('click', function(){
+      TitleOfDgvExist=false;
+      btnClear.classList.remove('display')
+      btnClear.classList.add("none");
+      resPesquisa.innerHTML='';
+  
+    });
+};
 const createTitleOfDgv=function(resPesquisa){
   TitleOfDgvExist=true
   resPesquisa.innerHTML="Resultado da Pesquisa: "
@@ -125,7 +127,6 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   .then(data =>{
 
     if(TitleOfDgvExist==false){
-      WastheResearchDone=true
       createTitleOfDgv(resPesquisa)
       const contato=document.createElement('div')
       contato.setAttribute('class','contato')

@@ -25,6 +25,7 @@
 }
 .dgvLinha{
     display: flex;
+    position: relative;
     justify-content: flex-start;
     align-self: flex-start;
     flex-direction: row;
@@ -69,20 +70,14 @@
 .pdo:hover{
     font-size: larger;
 }
-.divpdo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 180px;
-    left: 780px;
-    width: 300px;
-    height: 100px;
-    border: 1px solid white;
-    border-radius: 5px;
-}
-.divpdo>button{
 
+.openOperations{
+    width: 100px;
+    height: 50px;
+    background-color: #aaa;
+    position: absolute;
+    top: 0;
+    left: 780px;
 }
 /*---------------------------*/
 
