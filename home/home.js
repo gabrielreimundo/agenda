@@ -41,7 +41,7 @@ const createDataGridView = function(el, dgvDados,operationsdashboard) {
   c6.innerHTML = '...';
   dgvLinha.appendChild(c6)
   
-  c6.addEventListener('click', function(e) {
+  c6.addEventListener('click', function() {
     c6.classList.toggle('openOperations')
     c6.innerHTML=''
     const btnEdit=document.createElement('button')
@@ -50,8 +50,19 @@ const createDataGridView = function(el, dgvDados,operationsdashboard) {
     const btnDelete=document.createElement('button')
     btnDelete.innerHTML='Excluir'
     c6.appendChild(btnDelete)
+
+    const fechar=document.createElement('button')
+    fechar.innerHTML='Fechar'
+    c6.appendChild(fechar)
+
+    fechar.addEventListener('click',function(c6){
+      c6.classList.toggle('openOperations')
+      btnDelete.classList.add('none')
+      btnEdit.classList.add('none')
+      c6.innerHTML='...'
+    });
   
-    console.log(e.target.parentNode.firstChild)
+    // console.log(e.target.parentNode.firstChild)
 
   }
   );
