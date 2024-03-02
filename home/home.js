@@ -52,20 +52,21 @@ const createDataGridView = function(el, dgvDados,operationsdashboard) {
     c6.appendChild(btnDelete)
 
     const fechar=document.createElement('button')
+    fechar.setAttribute('fechar','btnfechar')
     fechar.innerHTML='Fechar'
     c6.appendChild(fechar)
 
-    fechar.addEventListener('click',function(c6){
-      c6.classList.toggle('openOperations')
-      btnDelete.classList.add('none')
-      btnEdit.classList.add('none')
-      c6.innerHTML='...'
-    });
-  
     // console.log(e.target.parentNode.firstChild)
-
   }
   );
+  
+
+
+  const btnfechar=document.getElementsByClassName('btnfechar')
+  btnfechar.addEventListener('click',function(){
+    c6.classList.toggle('openOperations')
+    c6.innerHTML='...'
+  });
 
   dgvDados.appendChild(dgvLinha)
 }
