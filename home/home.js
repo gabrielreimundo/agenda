@@ -7,7 +7,7 @@ let TitleOfDgvExist=false;
 
 
 
-const createDataGridView = function(el, dgvDados,operationsdashboard) {
+const createDataGridView = function(el, dgvDados) {
   const dgvLinha = document.createElement("div");
   dgvLinha.setAttribute("class","dgvLinha");
 
@@ -38,43 +38,44 @@ const createDataGridView = function(el, dgvDados,operationsdashboard) {
 
   const c6 = document.createElement('div')
   c6.setAttribute("class","pdo");
-  c6.innerHTML = '...';
+  c6.textContent = '...';
   dgvLinha.appendChild(c6)
   
-  c6.addEventListener('click', function() {
-    c6.classList.toggle('openOperations')
-    c6.innerHTML=''
-    const btnEdit=document.createElement('button')
+
+
+  c6.addEventListener('click', function(el) {
+    this.classList.toggle('openOperations')
+    this.textContent=''
+    const btnEdit=document.createElement('a')
+    btnEdit.setAttribute('href','./gestao/gestao.html')
     btnEdit.innerHTML='Editar'
-    c6.appendChild(btnEdit)
-    const btnDelete=document.createElement('button')
-    btnDelete.innerHTML='Excluir'
-    c6.appendChild(btnDelete)
+    this.appendChild(btnEdit)
 
-    const fechar=document.createElement('button')
-    fechar.setAttribute('fechar','btnfechar')
-    fechar.innerHTML='Fechar'
-    c6.appendChild(fechar)
 
-    // console.log(e.target.parentNode.firstChild)
+    let IdContato;
+    IdContato = el.target.parentNode.firstChild.innerHTML
+    editctt(IdContato)
   }
   );
   
 
 
-  const btnfechar=document.getElementsByClassName('btnfechar')
-  btnfechar.addEventListener('click',function(){
-    c6.classList.toggle('openOperations')
-    c6.innerHTML='...'
-  });
-
   dgvDados.appendChild(dgvLinha)
 }
+
+
+const editctt=(Id)=>{
+  // console.log(Id)
+  let res=Id
+  return res
+}
+
 fetch('http://localhost:8081/dados')
 .then(res => res.json())
 .then(res => {
   res.forEach(el => {
     createDataGridView(el,dgvDados)
+    
   })
 })
 const btnC=function(resPesquisa){
@@ -206,3 +207,4 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   })
 });
 
+export default editctt;

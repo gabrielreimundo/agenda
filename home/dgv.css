@@ -82,18 +82,18 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     border-radius: 5px;
 }
-.openOperations>button{
-    font-size: small;
+.openOperations>a{
+    font-size: large;
     height: 20px;
     width: 50px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
     border-radius: 5px;
+    color: aliceblue;
 }
-.openOperations>button:hover{
+.openOperations>a:hover{
     background-color: #088;
 }
 /*---------------------------*/
