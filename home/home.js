@@ -65,9 +65,7 @@ const createDataGridView = function(el, dgvDados) {
 
 
 const editctt=(Id)=>{
-  // console.log(Id)
-  let res=Id
-  return res
+    return Id
 }
 
 fetch('http://localhost:8081/dados')
@@ -207,4 +205,4 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   })
 });
 
-export default editctt;
+export default editctt

@@ -1,5 +1,8 @@
-const editctt = require("../home");
-const div = document.getElementById("infoCtt");
+ import  editctt  from "../home.js";
+// const div = document.querySelector("#infoCtt");
+const p = document.getElementById('a')
 
-const id = editctt;
-console.log(id);
+console.log.log(editctt())
+
+p.innerHTML='oi'
+
