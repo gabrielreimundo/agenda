@@ -56,6 +56,25 @@ app.post('/buscar', function(req, res) {
   }); 
 });
 
+app.post('/idContatogestao', function(req, res) {
+  Post.findAll({
+      where: {
+          id: req.body.idContato
+      }
+  }).then(function(contatos) { 
+      const contatoData = contatos.map(contato => ({
+          id: contato.id,
+          nome: contato.nome,
+          celular: contato.celular,
+          email: contato.email,
+          dtnasc: contato.dtnasc
+      }));
+      res.json(contatoData);
+  }).catch(function(erro){
+      res.status(500).json({ erro: erro.toString() });
+  }); 
+});
+
 app.post('/excluir',function(req, res){
     Post.destroy({
         where: {
@@ -67,6 +86,8 @@ app.post('/excluir',function(req, res){
         res.status(500).json({ erro: erro.toString() });
       });
 })
+
+app.
 
    //CALLBACK    
    app.listen(8081, function(){

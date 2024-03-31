@@ -28,7 +28,7 @@ btnform.addEventListener('click',(e)=>{
       var celular=document.getElementById('f_celular').value="";
       var email=document.getElementById('f_email').value="";
       var dtnasc=document.getElementById('f_dtnasc').value="";
-      alert("Conato Salvo com sucesso bb!")
+      alert("Conato Salvo com sucesso!")
 })
 btnCancel.addEventListener('click',(e)=>{
   var id=document.getElementById('f_id').value="";

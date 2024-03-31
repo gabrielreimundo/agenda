@@ -43,18 +43,24 @@ const createDataGridView = function(el, dgvDados) {
   
 
 
-  c6.addEventListener('click', function(el) {
+  c6.addEventListener('click', function(el,res){
     this.classList.toggle('openOperations')
     this.textContent=''
     const btnEdit=document.createElement('a')
     btnEdit.setAttribute('href','./gestao/gestao.html')
     btnEdit.innerHTML='Editar'
     this.appendChild(btnEdit)
-
-
-    let IdContato;
-    IdContato = el.target.parentNode.firstChild.innerHTML
-    editctt(IdContato)
+  
+  
+  
+    var idContato = el.target.parentNode.firstChild.innerHTML
+    fetch('http://localhost:8081/idContatogestao', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({idContato: idContato}),
+  })
   }
   );
   
@@ -64,9 +70,6 @@ const createDataGridView = function(el, dgvDados) {
 }
 
 
-const editctt=(Id)=>{
-    return Id
-}
 
 fetch('http://localhost:8081/dados')
 .then(res => res.json())
@@ -124,6 +127,7 @@ const createTitleOfDgv=function(resPesquisa){
 
 
 document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
+
   e.preventDefault();
   let nome = document.getElementById('inputPesquisa').value;
   btnC(resPesquisa)
@@ -205,4 +209,4 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   })
 });
 
-export default editctt
+// export default editctt
