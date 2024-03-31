@@ -1,7 +1,7 @@
 .dgv{
     display: flex;
-    justify-content: flex-start;
-    align-self: flex-start;
+    justify-content: center;
+    align-self: center;
     flex-direction: column;
 }
 .dgvTitulos{
@@ -64,38 +64,9 @@
     width: 200px;
     text-align: center;
 }
-.pdo{
-    font-size: large;
-}
-.pdo:hover{
-    font-size: larger;
-}
 
-.openOperations{
-    width: 110px;
-    height: 40px;
-    background-color: #ddd;
-    position: absolute;
-    top: 0;
-    left: 780px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-}
-.openOperations>a{
-    font-size: large;
-    height: 20px;
-    width: 50px;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    border-radius: 5px;
-    color: aliceblue;
-}
-.openOperations>a:hover{
-    background-color: #088;
-}
+
+
 /*---------------------------*/
 
 #CampoPesquisa{

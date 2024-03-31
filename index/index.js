@@ -15,6 +15,10 @@ btn_novo.addEventListener("click",(evt)=>{
     selecionarAba(evt.target)
     window.open("../novo/novo.html","if_principal")
 })
+btn_gestao.addEventListener("click",(evt)=>{
+    selecionarAba(evt.target)
+    window.open("../gestao/gestao.html","if_principal")
+})
 btn_sobre.addEventListener("click",(evt)=>{
     selecionarAba(evt.target)
     window.open("../sobre/sobre.html","if_principal")

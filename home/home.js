@@ -36,36 +36,6 @@ const createDataGridView = function(el, dgvDados) {
   c5.innerHTML = el.dtnasc;
   dgvLinha.appendChild(c5)
 
-  const c6 = document.createElement('div')
-  c6.setAttribute("class","pdo");
-  c6.textContent = '...';
-  dgvLinha.appendChild(c6)
-  
-
-
-  c6.addEventListener('click', function(el,res){
-    this.classList.toggle('openOperations')
-    this.textContent=''
-    const btnEdit=document.createElement('a')
-    btnEdit.setAttribute('href','./gestao/gestao.html')
-    btnEdit.innerHTML='Editar'
-    this.appendChild(btnEdit)
-  
-  
-  
-    var idContato = el.target.parentNode.firstChild.innerHTML
-    fetch('http://localhost:8081/idC', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({idContato: idContato}),
-  })
-  }
-  );
-  
-
-
   dgvDados.appendChild(dgvLinha)
 }
 
@@ -209,4 +179,3 @@ document.getElementById('BtnPesquisa').addEventListener('click', function(e) {
   })
 });
 
-// export default editctt

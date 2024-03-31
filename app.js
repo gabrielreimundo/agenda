@@ -56,24 +56,7 @@ app.post('/buscar', function(req, res) {
   }); 
 });
 
-app.post('/idC', function(req, res) {
-  Post.findAll({
-      where: {
-          id: req.body.idContato
-      }
-  }).then(function(contatos) { 
-      const contatoData = contatos.map(contato => ({
-          id: contato.id,
-          nome: contato.nome,
-          celular: contato.celular,
-          email: contato.email,
-          dtnasc: contato.dtnasc
-      }));
-      res.json(contatoData);
-  }).catch(function(erro){
-      res.status(500).json({ erro: erro.toString() });
-  }); 
-});
+
 
 app.post('/excluir',function(req, res){
     Post.destroy({
@@ -91,7 +74,3 @@ app.post('/excluir',function(req, res){
 app.listen(8081, function(){
   console.log("Servidor ativo na url http:localhost:8081");
 });
-   //CALLBACK    
-//    app.listen(8081, function(){
-//     console.log("Servidor Rodando na url http://localhost:8081")
-// });
