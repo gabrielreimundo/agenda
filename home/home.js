@@ -54,7 +54,7 @@ const createDataGridView = function(el, dgvDados) {
   
   
     var idContato = el.target.parentNode.firstChild.innerHTML
-    fetch('http://localhost:8081/idContatogestao', {
+    fetch('http://localhost:8081/idC', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

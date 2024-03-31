@@ -56,7 +56,7 @@ app.post('/buscar', function(req, res) {
   }); 
 });
 
-app.post('/idContatogestao', function(req, res) {
+app.post('/idC', function(req, res) {
   Post.findAll({
       where: {
           id: req.body.idContato
@@ -87,7 +87,11 @@ app.post('/excluir',function(req, res){
       });
 })
 
-   //CALLBACK    
-   app.listen(8081, function(){
-    console.log("Servidor Rodando na url http://localhost:8081")
+
+app.listen(8081, function(){
+  console.log("Servidor ativo na url http:localhost:8081");
 });
+   //CALLBACK    
+//    app.listen(8081, function(){
+//     console.log("Servidor Rodando na url http://localhost:8081")
+// });
