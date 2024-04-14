@@ -1,5 +1,5 @@
 
-fetch('http://localhost:8081/idC', {
+fetch('http://localhost:8081/dados', {
   method: 'POST', // Especifica o método POST
   headers: {
     'Content-Type': 'application/json'
